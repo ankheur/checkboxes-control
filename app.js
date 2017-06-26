@@ -1,7 +1,18 @@
 'use strict';
 
-// the first entry is the id of each checkboxes, the followings are the checkboxes which should be disabled if this checkbox is checked
-var plage = [['A1', 'allCheckbox'], ['A2', 'allCheckbox'], ['A3', 'A4'], ['A4', 'A3'], ['A5', 'A6', 'A7'], ['A6', 'A5', 'A7'], ['A7', 'A5', 'A6', 'A8'], ['A8', 'A7']];
+/*  
+    the first entry is the id of each checkboxes, the followings are the checkboxes which should be disabled 
+    if this checkbox is checked 
+*/
+
+var plage = [['A1', 'allCheckbox'], 
+             ['A2', 'allCheckbox'], 
+             ['A3', 'A4'], 
+             ['A4', 'A3'], 
+             ['A5', 'A6', 'A7'], 
+             ['A6', 'A5', 'A7'], 
+             ['A7', 'A5', 'A6', 'A8'], 
+             ['A8', 'A7']];
 
 
 var inputs = document.querySelectorAll('#testForm input');
