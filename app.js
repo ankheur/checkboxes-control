@@ -24,7 +24,7 @@ inputs.forEach(function (item) {
     item.addEventListener('click', function () {
 
         const checked = verifChecked();
-        const itemDisabled = [];
+        let itemDisabled = [];
 
         //On commence par tout décocher
         inputs.forEach(function (input) {
