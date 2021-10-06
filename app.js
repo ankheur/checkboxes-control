@@ -1,30 +1,30 @@
 'use strict';
 
-/*  
-    the first entry is the id of each checkboxes, the followings are the checkboxes which should be disabled 
-    if this checkbox is checked 
+/*
+    the first entry is the id of each checkboxes, the followings are the checkboxes which should be disabled
+    if this checkbox is checked
 */
 
-var plage = [['A1', 'allCheckbox'], 
-             ['A2', 'allCheckbox'], 
-             ['A3', 'A4'], 
-             ['A4', 'A3'], 
-             ['A5', 'A6', 'A7'], 
-             ['A6', 'A5', 'A7'], 
-             ['A7', 'A5', 'A6', 'A8'], 
+const plage = [['A1', 'allCheckbox'],
+             ['A2', 'allCheckbox'],
+             ['A3', 'A4'],
+             ['A4', 'A3'],
+             ['A5', 'A6', 'A7'],
+             ['A6', 'A5', 'A7'],
+             ['A7', 'A5', 'A6', 'A8'],
              ['A8', 'A7']];
 
 
-var inputs = document.querySelectorAll('#testForm input');
-var checkboxes = document.querySelectorAll('#testForm input[type=checkbox]');
+const inputs = document.querySelectorAll('#testForm input');
+const checkboxes = document.querySelectorAll('#testForm input[type=checkbox]');
 
 
 inputs.forEach(function (item) {
 
     item.addEventListener('click', function () {
 
-        var checked = verifChecked();
-        var itemDisabled = [];
+        const checked = verifChecked();
+        const itemDisabled = [];
 
         //On commence par tout décocher
         inputs.forEach(function (input) {
@@ -41,19 +41,19 @@ inputs.forEach(function (item) {
         checked.forEach(function (idChecked) {
 
             // We look in the arrays
-            for (var i = 0; i < plage.length; i++) {
+            for (let i = 0; i < plage.length; i++) {
 
-                var plageID = plage[i][0];
+                let plageID = plage[i][0];
 
                 //Quand on trouve la bonne plage
                 if (plageID === idChecked) {
 
                     //we get the ids in the array (expect the first one)
-                    for (var j = 1; j < plage[i].length; j++) {
-                    
+                    for (let j = 1; j < plage[i].length; j++) {
+
                         //we push them in a new array
                         itemDisabled.push(plage[i][j]);
-                        
+
                     }
                 }
             }
@@ -68,10 +68,10 @@ inputs.forEach(function (item) {
             item.disabled = false;
             item.checked = true;
 
-            
+
         } else { //Else we disable the inputs contained in the array itemDisabled
             itemDisabled.forEach(function (id) {
-                var inputToDisable = document.getElementById(id);
+                let inputToDisable = document.getElementById(id);
                 inputToDisable.disabled = true;
             });
         }
@@ -80,8 +80,8 @@ inputs.forEach(function (item) {
 
 //Return an array with all checked items
 function verifChecked() {
-    var checkedInputs = document.querySelectorAll('#testForm input:checked');
-    var checkedID = [];
+    let checkedInputs = document.querySelectorAll('#testForm input:checked');
+    let checkedID = [];
     checkedInputs.forEach(function (item) {
         checkedID.push(item.id);
     });
