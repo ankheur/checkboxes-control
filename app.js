@@ -11,7 +11,7 @@ const plage = [['A1', 'allCheckbox'],
              ['A4', 'A3'], 
              ['A5', 'A6', 'A7'], 
              ['A6', 'A5', 'A7'], 
-             ['A7', 'A5', 'A6', 'A8'], 
+             ['A7', 'A5', 'A6', 'A8'],
              ['A8', 'A7']];
 
 
@@ -23,7 +23,8 @@ inputs.forEach(function (item) {
 
     item.addEventListener('click', function () {
 
-        let checked = verifChecked();
+
+        const checked = verifChecked();
         let itemDisabled = [];
 
         //On commence par tout décocher || We start with checking everything
@@ -40,20 +41,21 @@ inputs.forEach(function (item) {
         //For every checked items || Pour chaque items checkés
         checked.forEach(function (idChecked) {
 
-            // We look in the arrays || On regarde dans les tableaux
-            for (const i = 0; i < plage.length; i++) {
 
-                const plageID = plage[i][0];
+            // We look in the arrays || On regarde dans les tableaux
+            for (let i = 0; i < plage.length; i++) {
+
+                let plageID = plage[i][0];
 
                 //Quand on trouve la bonne plage || When you find the right one
                 if (plageID === idChecked) {
 
                     //we get the ids in the array (expect the first one) || On trouve les ids du tableaux sauf pour le premier
-                    for (const j = 1; j < plage[i].length; j++) {
-                    
+                    for (let j = 1; j < plage[i].length; j++) {
+
                         //we push them in a new array || on les push dans un nouveau tableau
                         itemDisabled.push(plage[i][j]);
-                        
+
                     }
                 }
             }
@@ -68,8 +70,7 @@ inputs.forEach(function (item) {
             item.disabled = false;
             item.checked = true;
 
-            
-        } else { //Else we disable the inputs contained in the array itemDisabled || ou on désactive les inputs contenus dans le tableau itemDisabled
+        } else { // Else we disable the inputs contained in the array itemDisabled || ou on désactive les inputs contenus dans le tableau itemDisabled
             itemDisabled.forEach(function (id) {
                 const inputToDisable = document.getElementById(id);
                 inputToDisable.disabled = true;
@@ -82,6 +83,7 @@ inputs.forEach(function (item) {
 function verifChecked() {
     const checkedInputs = document.querySelectorAll('#testForm input:checked');
     const checkedID = [];
+
     checkedInputs.forEach(function (item) {
         checkedID.push(item.id);
     });
