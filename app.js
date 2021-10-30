@@ -1,16 +1,16 @@
 'use strict';
 
-/*  
-    the first entry is the id of each checkboxes, the followings are the checkboxes which should be disabled 
+/*
+    the first entry is the id of each checkboxes, the followings are the checkboxes which should be disabled
     if this checkbox is checked || La première entrée est l'id de chaque checkboxes, les suivantes sont les id des checkboxes qui seront désactivées si cette checkboxe est active.
 */
 
-const plage = [['A1', 'allCheckbox'], 
-             ['A2', 'allCheckbox'], 
-             ['A3', 'A4'], 
-             ['A4', 'A3'], 
-             ['A5', 'A6', 'A7'], 
-             ['A6', 'A5', 'A7'], 
+const plage = [['A1', 'allCheckbox'],
+             ['A2', 'allCheckbox'],
+             ['A3', 'A4'],
+             ['A4', 'A3'],
+             ['A5', 'A6', 'A7'],
+             ['A6', 'A5', 'A7'],
              ['A7', 'A5', 'A6', 'A8'],
              ['A8', 'A7']];
 
@@ -19,9 +19,9 @@ const inputs = document.querySelectorAll('#testForm input');
 const checkboxes = document.querySelectorAll('#testForm input[type=checkbox]');
 
 
-inputs.forEach(function (item) {
+inputs.forEach((item) => {
 
-    item.addEventListener('click', function () {
+    item.addEventListener('click', () => {
 
 
         const checked = verifChecked();
@@ -39,7 +39,7 @@ inputs.forEach(function (item) {
 
 
         //For every checked items || Pour chaque items checkés
-        checked.forEach(function (idChecked) {
+        checked.forEach((idChecked) => {
 
 
             // We look in the arrays || On regarde dans les tableaux
@@ -63,7 +63,7 @@ inputs.forEach(function (item) {
 
         //If a checkbox should disable all the others (with the keyword allCheckbox) || Si une checkbox doit désactiver toutes les autres avec le mot-clé allCheckbox
         if (itemDisabled.includes('allCheckbox')) {
-            checkboxes.forEach(function (checkbox) {
+            checkboxes.forEach((checkbox) => {
                 checkbox.disabled = true;
                 checkbox.checked = false;
             });
@@ -71,7 +71,7 @@ inputs.forEach(function (item) {
             item.checked = true;
 
         } else { // Else we disable the inputs contained in the array itemDisabled || ou on désactive les inputs contenus dans le tableau itemDisabled
-            itemDisabled.forEach(function (id) {
+            itemDisabled.forEach((id) => {
                 const inputToDisable = document.getElementById(id);
                 inputToDisable.disabled = true;
             });
@@ -84,7 +84,7 @@ function verifChecked() {
     const checkedInputs = document.querySelectorAll('#testForm input:checked');
     const checkedID = [];
 
-    checkedInputs.forEach(function (item) {
+    checkedInputs.forEach((item) => {
         checkedID.push(item.id);
     });
     return checkedID;
